@@ -1,24 +1,25 @@
 'use strict';
 const execa = require('execa');
 const isJpg = require('is-jpg');
-const jpegoptim = require('jpegoptim-bin');
+const jpegoptim = require('@mole-inc/jpegoptim-bin');
 
-module.exports = options => buffer => {
-	options = Object.assign({
+module.exports = options => async buffer => {
+	options = {
 		stripAll: true,
 		stripCom: true,
 		stripExif: true,
 		stripIptc: true,
 		stripIcc: true,
-		stripXmp: true
-	}, options);
+		stripXmp: true,
+		...options
+	};
 
 	if (!Buffer.isBuffer(buffer)) {
-		return Promise.reject(new TypeError(`Expected a Buffer, got ${typeof buffer}`));
+		throw new TypeError(`Expected a Buffer, got ${typeof buffer}`);
 	}
 
 	if (!isJpg(buffer)) {
-		return Promise.resolve(buffer);
+		return buffer;
 	}
 
 	const args = [
@@ -62,9 +63,10 @@ module.exports = options => buffer => {
 		args.push(`--size=${options.size}`);
 	}
 
-	return execa.stdout(jpegoptim, args, {
+	const {stdout} = await execa(jpegoptim, args, {
 		encoding: null,
 		input: buffer,
 		maxBuffer: Infinity
 	});
+	return stdout;
 };

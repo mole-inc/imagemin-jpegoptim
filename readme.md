@@ -1,22 +1,27 @@
-# imagemin-jpegoptim [![Build Status](https://travis-ci.org/imagemin/imagemin-jpegoptim.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-jpegoptim)
+# imagemin-jpegoptim ![Node CI](https://github.com/mole-inc/imagemin-jpegoptim/workflows/Node%20CI/badge.svg)
 
 > [Imagemin](https://github.com/imagemin/imagemin) plugin for [jpegoptim](https://github.com/tjko/jpegoptim)
+
+
+[![Downloads](https://badgen.net/npm/dm/@mole-inc/imagemin-jpegoptim)](https://www.npmjs.com/package/@mole-inc/imagemin-jpegoptim)
+[![Version](https://badgen.net/npm/v/@mole-inc/imagemin-jpegoptim)](https://www.npmjs.com/package/@mole-inc/imagemin-jpegoptim)
+[![codecov](https://codecov.io/gh/mole-inc/imagemin-jpegoptim/branch/master/graph/badge.svg)](https://codecov.io/gh/mole-inc/imagemin-jpegoptim)
 
 
 ## Install
 
 ```
-$ npm install imagemin-jpegoptim
+$ npm install @mole-inc/imagemin-jpegoptim
 ```
 
-See [`jpegoptim-bin`'s install section](https://github.com/imagemin/jpegoptim-bin#install) for requirements.
+See [`jpegoptim-bin`'s install section](https://github.com/mole-inc/jpegoptim-bin#install) for requirements.
 
 
 ## Usage
 
 ```js
 const imagemin = require('imagemin');
-const imageminJpegoptim = require('imagemin-jpegoptim');
+const imageminJpegoptim = require('@mole-inc/imagemin-jpegoptim');
 
 (async () => {
 	await imagemin(['images/*.jpg'], 'build/images', {
@@ -113,4 +118,6 @@ Buffer to optimize.
 
 ## License
 
-MIT © [Imagemin](https://github.com/imagemin)
+This is a fork of [imagemin/imagemin-jpegoptim](https://github.com/imagemin/imagemin-jpegoptim).
+
+see license file.
